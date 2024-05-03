@@ -1,0 +1,342 @@
+{% extends 'patient/patientbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+<head>
+        <!-- Font special for pages-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+        <!-- Main CSS-->
+    
+        <link href="{% static "css/main.css" %}"rel="stylesheet" media="all">
+</head>
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+    <div class="wrapper wrapper--w790">
+      
+        <div style="margin-left: 70px;" class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">MAKE BLOOD REQUEST</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-row">
+                        <div class="name">Patient Name</div>
+                        <div class="value">
+                            <div class="input-group">
+                                {% render_field request_form.patient_name|attr:'required:true'  class="input--style-5"  %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Patient Age</div>
+                        <div class="value">
+                            <div class="input-group">
+                                {% render_field request_form.patient_age|attr:'required:true'  class="input--style-5"  %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Reason</div>
+                        <div class="value">
+                            <div class="input-group">
+                                {% render_field request_form.reason|attr:'required:true'  class="input--style-5"  %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Hubs</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select id="locationDropdown">
+                                        <!-- Andhra Pradesh -->
+                                        <option value="AP010101">AP010101</option>
+                                        <option value="AP010102">AP010102</option>
+                                        <option value="AP010103">AP010103</option>
+                                        <option value="AP020101">AP020101</option>
+                                        <option value="AP020102">AP020102</option>
+                                        <option value="AP020103">AP020103</option>
+                                        
+                                        <!-- Arunachal Pradesh -->
+                                        <option value="AR010101">AR010101</option>
+                                        <option value="AR010102">AR010102</option>
+                                        <option value="AR010103">AR010103</option>
+                                        <option value="AR020101">AR020101</option>
+                                        <option value="AR020102">AR020102</option>
+                                        <option value="AR020103">AR020103</option>
+                                        
+                                        <!-- Assam -->
+                                        <option value="AS010101">AS010101</option>
+                                        <option value="AS010102">AS010102</option>
+                                        <option value="AS010103">AS010103</option>
+                                        <option value="AS020101">AS020101</option>
+                                        <option value="AS020102">AS020102</option>
+                                        <option value="AS020103">AS020103</option>
+                                        
+                                        <!-- Bihar -->
+                                        <option value="BI010101">BI010101</option>
+                                        <option value="BI010102">BI010102</option>
+                                        <option value="BI010103">BI010103</option>
+                                        <option value="BI020101">BI020101</option>
+                                        <option value="BI020102">BI020102</option>
+                                        <option value="BI020103">BI020103</option>
+                                      
+                                        <!-- Chhattisgarh -->
+                                        <option value="CG010101">CG010101</option>
+                                        <option value="CG010102">CG010102</option>
+                                        <option value="CG010103">CG010103</option>
+                                        <option value="CG020101">CG020101</option>
+                                        <option value="CG020102">CG020102</option>
+                                        <option value="CG020103">CG020103</option>
+                                      
+                                        <!-- Goa -->
+                                        <option value="GA010101">GA010101</option>
+                                        <option value="GA010102">GA010102</option>
+                                        <option value="GA010103">GA010103</option>
+                                        <option value="GA020101">GA020101</option>
+                                        <option value="GA020102">GA020102</option>
+                                        <option value="GA020103">GA020103</option>
+                                      
+                                        <!-- Gujarat -->
+                                        <option value="GJ010101">GJ010101</option>
+                                        <option value="GJ010102">GJ010102</option>
+                                        <option value="GJ010103">GJ010103</option>
+                                        <option value="GJ020101">GJ020101</option>
+                                        <option value="GJ020102">GJ020102</option>
+                                        <option value="GJ020103">GJ020103</option>
+                                      
+                                        <!-- Haryana -->
+                                        <option value="HR010101">HR010101</option>
+                                        <option value="HR010102">HR010102</option>
+                                        <option value="HR010103">HR010103</option>
+                                        <option value="HR020101">HR020101</option>
+                                        <option value="HR020102">HR020102</option>
+                                        <option value="HR020103">HR020103</option>
+                                      
+                                        <!-- Himachal Pradesh -->
+                                        <option value="HP010101">HP010101</option>
+                                        <option value="HP010102">HP010102</option>
+                                        <option value="HP010103">HP010103</option>
+                                        <option value="HP020101">HP020101</option>
+                                        <option value="HP020102">HP020102</option>
+                                        <option value="HP020103">HP020103</option>
+                                      
+                                        <!-- Jharkhand -->
+                                        <option value="JK010101">JK010101</option>
+                                        <option value="JK010102">JK010102</option>
+                                        <option value="JK010103">JK010103</option>
+                                        <option value="JK020101">JK020101</option>
+                                        <option value="JK020102">JK020102</option>
+                                        <option value="JK020103">JK020103</option>
+                                        
+                                        {% comment %} Karnataka {% endcomment %}
+                                        <option value="KA010101">KA010101</option>
+                                        <option value="KA010102">KA010102</option>
+                                        <option value="KA010103">KA010103</option>
+                                        <option value="KA020101">KA020101</option>
+                                        <option value="KA020102">KA020102</option>
+                                        <option value="KA020103">KA020103</option>
+
+                                        <!-- Kerala -->
+                                        <option value="KL010101">KL010101</option>
+                                        <option value="KL010102">KL010102</option>
+                                        <option value="KL010103">KL010103</option>
+                                        <option value="KL020101">KL020101</option>
+                                        <option value="KL020102">KL020102</option>
+                                        <option value="KL020103">KL020103</option>
+
+                                        <!-- Madhya Pradesh -->
+                                        <option value="MP010101">MP010101</option>
+                                        <option value="MP010102">MP010102</option>
+                                        <option value="MP010103">MP010103</option>
+                                        <option value="MP020101">MP020101</option>
+                                        <option value="MP020102">MP020102</option>
+                                        <option value="MP020103">MP020103</option>
+
+                                        <!-- Maharashtra -->
+                                        <option value="MH010101">MH010101</option>
+                                        <option value="MH010102">MH010102</option>
+                                        <option value="MH010103">MH010103</option>
+                                        <option value="MH020101">MH020101</option>
+                                        <option value="MH020102">MH020102</option>
+                                        <option value="MH020103">MH020103</option>
+
+                                        <!-- Manipur -->
+                                        <option value="MN010101">MN010101</option>
+                                        <option value="MN010102">MN010102</option>
+                                        <option value="MN010103">MN010103</option>
+                                        <option value="MN020101">MN020101</option>
+                                        <option value="MN020102">MN020102</option>
+                                        <option value="MN020103">MN020103</option>
+
+                                        <!-- Meghalaya -->
+                                        <option value="ML010101">ML010101</option>
+                                        <option value="ML010102">ML010102</option>
+                                        <option value="ML010103">ML010103</option>
+                                        <option value="ML020101">ML020101</option>
+                                        <option value="ML020102">ML020102</option>
+                                        <option value="ML020103">ML020103</option>
+
+                                        <!-- Mizoram -->
+                                        <option value="MZ010101">MZ010101</option>
+                                        <option value="MZ010102">MZ010102</option>
+                                        <option value="MZ010103">MZ010103</option>
+                                        <option value="MZ020101">MZ020101</option>
+                                        <option value="MZ020102">MZ020102</option>
+                                        <option value="MZ020103">MZ020103</option>
+
+                                        <!-- Nagaland -->
+                                        <option value="NL010101">NL010101</option>
+                                        <option value="NL010102">NL010102</option>
+                                        <option value="NL010103">NL010103</option>
+                                        <option value="NL020101">NL020101</option>
+                                        <option value="NL020102">NL020102</option>
+                                        <option value="NL020103">NL020103</option>
+
+                                        <!-- Odisha -->
+                                        <option value="OD010101">OD010101</option>
+                                        <option value="OD010102">OD010102</option>
+                                        <option value="OD010103">OD010103</option>
+                                        <option value="OD020101">OD020101</option>
+                                        <option value="OD020102">OD020102</option>
+                                        <option value="OD020103">OD020103</option>
+
+                                        <!-- Punjab -->
+                                        <option value="PB010101">PB010101</option>
+                                        <option value="PB010102">PB010102</option>
+                                        <option value="PB010103">PB010103</option>
+                                        <option value="PB020101">PB020101</option>
+                                        <option value="PB020102">PB020102</option>
+                                        <option value="PB020103">PB020103</option>
+
+                                        <!-- Rajasthan -->
+                                        <option value="RJ010101">RJ010101</option>
+                                        <option value="RJ010102">RJ010102</option>
+                                        <option value="RJ010103">RJ010103</option>
+                                        <option value="RJ020101">RJ020101</option>
+                                        <option value="RJ020102">RJ020102</option>
+                                        <option value="RJ020103">RJ020103</option>
+
+                                        <!-- Sikkim -->
+                                        <option value="SK010101">SK010101</option>
+                                        <option value="SK010102">SK010102</option>
+                                        <option value="SK010103">SK010103</option>
+                                        <option value="SK020101">SK020101</option>
+                                        <option value="SK020102">SK020102</option>
+                                        <option value="SK020103">SK020103</option>
+
+                                        <!-- Tamil Nadu -->
+                                        <option value="TN010101">TN010101</option>
+                                        <option value="TN010102">TN010102</option>
+                                        <option value="TN010103">TN010103</option>
+                                        <option value="TN020101">TN020101</option>
+                                        <option value="TN020102">TN020102</option>
+                                        <option value="TN020103">TN020103</option>
+
+                                        <!-- Telangana -->
+                                        <option value="TS010101">TS010101</option>
+                                        <option value="TS010102">TS010102</option>
+                                        <option value="TS010103">TS010103</option>
+                                        <option value="TS020101">TS020101</option>
+                                        <option value="TS020102">TS020102</option>
+                                        <option value="TS020103">TS020103</option>
+
+                                        <!-- Tripura -->
+                                        <option value="TR010101">TR010101</option>
+                                        <option value="TR010102">TR010102</option>
+                                        <option value="TR010103">TR010103</option>
+                                        <option value="TR020101">TR020101</option>
+                                        <option value="TR020102">TR020102</option>
+                                        <option value="TR020103">TR020103</option>
+
+                                        <!-- Uttar Pradesh -->
+                                        <option value="UP010101">UP010101</option>
+                                        <option value="UP010102">UP010102</option>
+                                        <option value="UP010103">UP010103</option>
+                                        <option value="UP020101">UP020101</option>
+                                        <option value="UP020102">UP020102</option>
+                                        <option value="UP020103">UP020103</option>
+
+                                        <!-- Uttarakhand -->
+                                        <option value="UK010101">UK010101</option>
+                                        <option value="UK010102">UK010102</option>
+                                        <option value="UK010103">UK010103</option>
+                                        <option value="UK020101">UK020101</option>
+                                        <option value="UK020102">UK020102</option>
+                                        <option value="UK020103">UK020103</option>
+
+                                        <!-- West Bengal -->
+                                        <option value="WB010101">WB010101</option>
+                                        <option value="WB010102">WB010102</option>
+                                        <option value="WB010103">WB010103</option>
+                                        <option value="WB020101">WB020101</option>
+                                        <option value="WB020102">WB020102</option>
+                                        <option value="WB020103">WB020103</option>
+                                        </select>
+
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-row">
+                        <div class="name">Blood Group</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select name="bloodgroup">
+                                        <option disabled="disabled" selected="selected">Choose option</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>B+</option>
+                                        <option>B-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Unit (in ml)</div>
+                        <div class="value">
+                            <div class="input-group">
+                                {% render_field request_form.unit|attr:'required:true'  class="input--style-5"  %}
+                            </div>
+                        </div>
+                    </div>
+
+      <!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->              
+
+
+
+
+                    <div>
+                        <button class="btn btn--radius-2 btn-danger" type="submit">REQUEST</button>
+                    </div>
+                </form>
+                <br>
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
